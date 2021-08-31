@@ -2,7 +2,7 @@
 # uwu
 import smtplib
 from email.mime.multipart import MIMEMultipart
-
+import ur_passord
 from email.mime.base import MIMEBase
 from email import encoders
 import pyautogui
@@ -50,7 +50,7 @@ for i in range(15):
     my_message = message.as_string()
     email_session = smtplib.SMTP('smtp.gmail.com', 587)
     email_session.starttls()
-    email_session.login(sender_email, 'SofaNeLox')
+    email_session.login(sender_email, ur_passord.ur_pass)
     email_session.sendmail(sender_email, receiver_email, my_message)
     email_session.quit()
     print("Email send success")
