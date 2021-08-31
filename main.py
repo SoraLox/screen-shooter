@@ -1,5 +1,5 @@
 # I don’t know how this shit works but it works
-
+# uwu
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
